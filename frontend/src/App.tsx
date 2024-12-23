@@ -1,7 +1,6 @@
-import { Toaster } from "@/components/ui/toaster";
-import TranscribeButton from "./components/action-btn";
 import Preview from "./components/preview";
 import TranscribeContent from "./components/transcrib-content";
+import TranscribeButton from "./components/transcribe-btn";
 
 export default function App() {
   return (
@@ -20,8 +19,6 @@ export default function App() {
           <TranscribeContent />
         </div>
       </div>
-
-      <Toaster />
     </main>
   );
 }

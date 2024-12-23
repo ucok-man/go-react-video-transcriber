@@ -1,3 +1,4 @@
+import { useTranscribe } from "@/context/trasncribe-provider";
 import { useToast } from "@/hooks/use-toast";
 import { ChangeEvent, useState } from "react";
 import { cn, validateFileType } from "../../lib/utils";
@@ -5,6 +6,7 @@ import { Icons } from "../icons";
 
 export default function Preview() {
   const { toast } = useToast();
+  const { setFile } = useTranscribe();
   const [input, setInput] = useState<{ source: string; name: string } | null>(
     null
   );
@@ -49,6 +51,7 @@ export default function Preview() {
         name: file.name,
         source: objectUrl,
       });
+      setFile(file);
     } catch (error) {
       console.error("Error creating object URL:", error);
       toast({
@@ -86,6 +89,7 @@ export default function Preview() {
         name: file.name,
         source: objectUrl,
       });
+      setFile(file);
     } catch (error) {
       console.error("Error creating object URL:", error);
       toast({
