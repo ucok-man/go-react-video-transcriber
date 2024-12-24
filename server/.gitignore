@@ -1,0 +1,4 @@
+.env.local
+upload/*
+!upload/
+!upload/note.md
