@@ -12,7 +12,7 @@ import (
 
 	"github.com/openai/openai-go"
 	ffmpeg "github.com/u2takey/ffmpeg-go"
-	"github.com/ucok-man/fs-video-transcriber-server/internal/validator"
+	"github.com/ucok-man/go-react-video-transcriber-server/internal/validator"
 )
 
 const MAX_100MB = 100 << 20 // 100 MB

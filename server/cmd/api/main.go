@@ -9,7 +9,7 @@ import (
 
 	"github.com/openai/openai-go"
 	"github.com/openai/openai-go/option"
-	"github.com/ucok-man/fs-video-transcriber-server/internal/jsonlog"
+	"github.com/ucok-man/go-react-video-transcriber-server/internal/jsonlog"
 )
 
 var (

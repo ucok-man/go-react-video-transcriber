@@ -1,8 +1,8 @@
 name: fs-video-transcriber
 services:
   web:
-    container_name: fs-video-transcriber-web
-    image: fs-video-transcriber-web
+    container_name: go-react-video-transcriber-web
+    image: go-react-video-transcriber-web
     build:
       context: ./frontend
       dockerfile: Dockerfile
@@ -11,8 +11,8 @@ services:
     ports:
       - 3000:3000    
   api:
-    container_name: fs-video-transcriber-api
-    image: fs-video-transcriber-api
+    container_name: go-react-video-transcriber-api
+    image: go-react-video-transcriber-api
     build:
       context: ./server
       dockerfile: Dockerfile

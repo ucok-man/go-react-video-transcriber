@@ -1,4 +1,4 @@
-module github.com/ucok-man/fs-video-transcriber-server
+module github.com/ucok-man/go-react-video-transcriber-server
 
 go 1.23.0
 
