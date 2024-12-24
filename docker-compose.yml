@@ -1,0 +1,22 @@
+name: fs-video-transcriber
+services:
+  web:
+    container_name: fs-video-transcriber-web
+    image: fs-video-transcriber-web
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    env_file:
+      - ./frontend/.env.local
+    ports:
+      - 3000:3000    
+  api:
+    container_name: fs-video-transcriber-api
+    image: fs-video-transcriber-api
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    env_file:
+      - ./server/.env.local
+    ports:
+      - 4000:4000

@@ -2,3 +2,4 @@
 upload/*
 !upload/
 !upload/note.md
+bin/
