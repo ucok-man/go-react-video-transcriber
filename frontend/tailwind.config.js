@@ -8,6 +8,16 @@ export default {
   ],
   theme: {
     extend: {
+      animation: {
+        twinkle: "twinkle 1s ease-in-out infinite",
+      },
+      keyframes: {
+        twinkle: {
+          "0%, 100%": { opacity: 1 },
+          "50%": { opacity: 0.3 },
+        },
+      },
+
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

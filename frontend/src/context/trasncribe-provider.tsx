@@ -46,39 +46,37 @@ export default function TranscribeProvider({
     const formdata = new FormData();
     formdata.append("file", file);
 
-    startTransition(() => {
-      (async () => {
-        try {
-          const response = await axios.post(
-            import.meta.env.BACKEND_URL,
-            formdata,
-            {
-              headers: {
-                "Content-Type": "multipart/form-data",
-              },
-            }
-          );
-          if (response.status !== 200) {
-            console.log("!OK Response: ", response.data.error);
-            toast({
-              title: "Internal Server Error",
-              description:
-                "Sorry we have problem in our server. Try again later",
-            });
-            return;
+    // @ts-expect-error this should be no error on react 19 type checker
+    startTransition(async () => {
+      try {
+        const response = await axios.post(
+          `${import.meta.env.VITE_BACKEND_URL}/v1/transcribe`,
+          formdata,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
           }
-
-          startTransition(() => {
-            setTranscribedContent(response.data.transcrib);
-          });
-        } catch (error) {
-          console.log("Error transcribing:", error);
+        );
+        if (response.status !== 200) {
+          console.log("!OK Response: ", response.data.error);
           toast({
             title: "Internal Server Error",
             description: "Sorry we have problem in our server. Try again later",
           });
+          return;
         }
-      })();
+
+        startTransition(() => {
+          setTranscribedContent(response.data.transcribe);
+        });
+      } catch (error) {
+        console.log("Error transcribing:", error);
+        toast({
+          title: "Internal Server Error",
+          description: "Sorry we have problem in our server. Try again later",
+        });
+      }
     });
   }, [file, toast]);
 
@@ -91,7 +89,6 @@ export default function TranscribeProvider({
   );
 }
 
-// Custom hook to use the search context
 export const useTranscribe = () => {
   const context = useContext(TranscribeContext);
   if (context === undefined) {

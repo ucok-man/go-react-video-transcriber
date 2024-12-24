@@ -1,8 +1,12 @@
+import LoadingRocket from "./components/loading-rocket";
 import Preview from "./components/preview";
 import TranscribeContent from "./components/transcrib-content";
 import TranscribeButton from "./components/transcribe-btn";
+import { useTranscribe } from "./context/trasncribe-provider";
 
 export default function App() {
+  const { isTranscribing } = useTranscribe();
+
   return (
     <main className="min-h-screen bg-slate-900 text-slate-300">
       <div className="flex items-center justify-center p-8">
@@ -19,6 +23,15 @@ export default function App() {
           <TranscribeContent />
         </div>
       </div>
+
+      {isTranscribing && (
+        <div className="">
+          <div className="absolute inset-0 bg-black/80" />
+          <div className="absolute inset-0 flex size-full flex-col items-center justify-center">
+            <LoadingRocket />
+          </div>
+        </div>
+      )}
     </main>
   );
 }
